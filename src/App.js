@@ -9,7 +9,7 @@ function App() {
   const [city, setCity] = useState("")
 
   const getWeather = () => {
-    axios.get(`http://api.openweathermap.org/data/2.5/forecast?zip=${zipcode},us&units=imperial&appid=${KEY}`).then((response) => {
+    axios.get(`https://cors-anywhere.herokuapp.com/http://api.openweathermap.org/data/2.5/forecast?zip=${zipcode},us&units=imperial&appid=${KEY}`).then((response) => {
       console.log(response)
       setCity(response.data.city.name)
       setWeather(response.data.list);
@@ -38,6 +38,7 @@ function App() {
                 <Forecast key={day.dt} temp={day.main.temp} icon={day.weather[0].icon} description={day.weather[0].description} />
               )
             }
+            return
           })}
         </div>
       </div>
